@@ -23,6 +23,8 @@ cp env.example .env
 # Edit .env file with your configuration (optional for basic setup)
 ```
 
+**Note**: The project uses `npm install` instead of `npm ci` in the Docker build to avoid package-lock.json sync issues.
+
 3. **Start the application stack**
 ```bash
 docker-compose up -d
@@ -299,19 +301,24 @@ docker cp ci-dashboard-backend:/app/data/dashboard.db.backup ./backup.db
 
 ### Common Issues
 
-1. **Port conflicts**
+1. **Docker build failures**
+   - **npm ci errors**: The project uses `npm install` instead of `npm ci` to avoid package-lock.json sync issues
+   - **Permission errors**: Make sure Docker has proper permissions
+   - **Network issues**: Check if Docker can access external registries
+
+2. **Port conflicts**
    - Change ports in `.env` file
    - Update `BACKEND_PORT` and `FRONTEND_PORT`
 
-2. **Database issues**
+3. **Database issues**
    - Check volume permissions
    - Restart backend container
 
-3. **WebSocket connection issues**
+4. **WebSocket connection issues**
    - Verify CORS settings
    - Check firewall rules
 
-4. **Alerting not working**
+5. **Alerting not working**
    - Verify environment variables
    - Check webhook URLs and SMTP settings
 
