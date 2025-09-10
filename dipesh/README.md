@@ -338,6 +338,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**🎉 The CI/CD Pipeline Health Dashboard is ready for production deployment!**
+**The CI/CD Pipeline Health Dashboard is ready for production deployment!**
 
-This containerized solution provides comprehensive monitoring for your CI/CD pipelines with real-time updates, alerting, and a modern user interface.
+This containerized solution provides comprehensive monitoring for a CI/CD pipelines with real-time updates, alerting, and a modern user interface.
