@@ -272,7 +272,7 @@ docker-compose build
 ## Monitoring and Maintenance
 
 ### Health Checks
-- Backend: `curl http://localhost:8001/health`
+- Backend: `curl ç`
 - Frontend: `curl http://localhost:5173/`
 
 ### Logs
@@ -296,6 +296,12 @@ docker-compose exec backend cp /app/data/dashboard.db /app/data/dashboard.db.bac
 # Copy backup to host
 docker cp ci-dashboard-backend:/app/data/dashboard.db.backup ./backup.db
 ```
+
+## Access the dashboard:
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:8001
+- API Docs: http://localhost:8001/docs
+
 
 ## Troubleshooting
 
