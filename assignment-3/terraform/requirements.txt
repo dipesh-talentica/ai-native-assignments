@@ -1,0 +1,59 @@
+AI-Native KRA – DevOps Assignment 3 (IaC + Cloud Deployment) 
+
+Goal 
+
+Take your CI/CD Pipeline Health Dashboard (Assignment 2) and deploy it to the cloud using Infrastructure-as-Code (IaC). 
+
+You will use AI-native tools (ChatGPT, Copilot, Cursor) to help generate, debug, and document your IaC scripts. 
+
+ 
+
+Tasks 
+
+Provision Infrastructure with IaC 
+
+Use Terraform (preferred) to create: 
+
+A VM/Compute instance (EC2, GCP VM, or Azure VM) 
+
+Networking basics (VPC + Security Group/Firewall) 
+
+A managed DB (if your app needs one, e.g., RDS/Postgres/CloudSQL) 
+
+Deploy Your App 
+
+Use Terraform to install Docker + deploy your containerized app (from Assignment 2). 
+
+App should be accessible via a public URL/IP. 
+
+AI-Native Workflow 
+
+Use AI tools (ChatGPT, Copilot, Cursor) for: 
+
+Generating Terraform code 
+
+Writing deployment scripts 
+
+Creating documentation 
+
+ 
+
+Expected Outcome 
+
+A live dashboard running on cloud (AWS/GCP/Azure) 
+
+Infrastructure fully provisioned with Terraform (not manual clicks) 
+
+Documentation showing how AI tools were used 
+
+Deliverables 
+
+Terraform Scripts – committed to GitHub repo (/infra folder). 
+
+Deployment Guide (deployment.md) 
+
+How to apply Terraform & deploy app 
+
+AI prompts/examples used 
+
+Prompt Logs – record of prompts used (prompts.md). 
