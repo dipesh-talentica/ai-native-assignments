@@ -1,0 +1,146 @@
+
+# GitHub Copilot Prompt Logs
+
+This file records the detailed chat logs and prompts exchanged with GitHub Copilot during the development of the CI/CD Pipeline Health Dashboard and its Terraform infrastructure. Each entry documents the reasoning, decisions, and code generated throughout the project.
+
+---
+
+## 1. Project Initialization
+
+**Prompt:**
+"I need a CI/CD dashboard that ingests build data from GitHub Actions and Jenkins, stores it in a database, and displays real-time metrics in a React frontend."
+
+**Copilot Response:**
+- Proposed FastAPI for backend REST API and WebSocket support.
+- Suggested SQLite with SQLAlchemy for build data storage.
+- Recommended React + Recharts for frontend dashboard.
+- Advised Dockerization for both backend and frontend.
+- Outlined initial folder structure for backend, frontend, and infrastructure.
+
+---
+
+## 2. Backend API Design
+
+**Prompt:**
+"Write FastAPI endpoints for ingesting build data from GitHub Actions and Jenkins. Include a metrics summary endpoint and a WebSocket for live updates."
+
+**Copilot Response:**
+- Implemented `/ingest/github` and `/ingest/jenkins` POST endpoints with Pydantic validation.
+- Added `/metrics/summary` GET endpoint for build statistics (success/failure rates, average build time).
+- Created `/ws` WebSocket endpoint for real-time build event broadcasting.
+- Provided sample payloads and error handling strategies.
+
+---
+
+## 3. Database Schema
+
+**Prompt:**
+"Define a SQLAlchemy model for storing build information: provider, pipeline, repo, branch, status, timestamps, duration, URL, and logs."
+
+**Copilot Response:**
+- Created `Build` model with all specified fields and types.
+- Added `created_at` for record timestamp and indexing.
+- Integrated model with FastAPI endpoints and database migrations.
+
+---
+
+## 4. Alerting System
+
+**Prompt:**
+"Add Slack and email alerting for failed builds. Use environment variables for configuration."
+
+**Copilot Response:**
+- Developed `alert_failure` function in `alerting.py` supporting both Slack webhook and SMTP email.
+- Used `.env` for sensitive configuration and fallback logic.
+- Provided example alert payloads and error handling.
+
+---
+
+## 5. Frontend Dashboard
+
+**Prompt:**
+"Build a React dashboard that fetches metrics and builds from the backend, displays charts, and updates in real-time via WebSocket."
+
+**Copilot Response:**
+- Used Axios for API calls and error handling.
+- Implemented Recharts for line and pie charts visualizing build metrics.
+- Established WebSocket connection for live updates and notifications.
+- Added modal for build logs display and filtering options.
+- Provided sample UI wireframes and component breakdown.
+
+---
+
+## 6. Dockerization
+
+**Prompt:**
+"Write multi-stage Dockerfiles for backend and frontend. Use health checks and production-ready settings."
+
+**Copilot Response:**
+- Created backend Dockerfile with Python venv, non-root user, and healthcheck.
+- Built frontend Dockerfile with Vite build, nginx for SPA serving, and healthcheck.
+- Provided `.dockerignore` files and build instructions.
+
+---
+
+## 7. Docker Compose Orchestration
+
+**Prompt:**
+"Create a docker-compose.yml to orchestrate backend and frontend containers, with health checks and persistent volume for SQLite DB."
+
+**Copilot Response:**
+- Defined backend and frontend services in docker-compose.
+- Configured volume for `/app/data` persistence and environment variables.
+- Set up health checks for both services and network configuration.
+
+---
+
+## 8. Terraform Infrastructure
+
+**Prompt:**
+"Generate Terraform scripts to deploy the app on AWS EC2, with ECR, EBS for SQLite, CloudWatch logs, Secrets Manager for SMTP, and security group for HTTP/SSH."
+
+**Copilot Response:**
+- Created resources for EC2, ECR, EBS, CloudWatch, Secrets Manager, IAM roles, and security group.
+- Wrote user data script for EC2 to install Docker, mount EBS, fetch secrets, and run containers.
+- Documented outputs and variables for customization and scaling.
+
+---
+
+## 9. Deployment Documentation
+
+**Prompt:**
+"Write a deployment guide for applying Terraform, building/pushing Docker images, and accessing the dashboard."
+
+**Copilot Response:**
+- Provided step-by-step instructions for `terraform init`, `apply`, Docker build/push, SSH access, and troubleshooting.
+- Added notes on environment variables, secret management, and rollback procedures.
+
+---
+
+## 10. Testing & Verification
+
+**Prompt:**
+"Add test scripts for backend and frontend. Include a setup verification script."
+
+**Copilot Response:**
+- Wrote `test_backend.py` for API endpoint tests and coverage.
+- Created `test_frontend.mjs` for frontend utility and data transformation tests.
+- Added `test_setup.py` for integration and environment checks.
+- Provided sample test cases and expected outputs.
+
+---
+
+## 11. Final Review & Documentation
+
+**Prompt:**
+"Summarize the architecture and features in README.md. Include troubleshooting and contributing sections."
+
+**Copilot Response:**
+- Generated comprehensive README with architecture diagram, setup instructions, API documentation, and troubleshooting tips.
+- Added contributing guidelines, code of conduct, and references to AI-native workflow.
+
+---
+
+## 12. AI-Native Workflow Summary
+
+All code, infrastructure, and documentation were generated using GitHub Copilot and other AI-native tools as per assignment requirements. This log provides a transparent record of the iterative prompt-driven development process.
